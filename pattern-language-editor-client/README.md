@@ -15,7 +15,7 @@ Linux を使っている場合は、[nodesource](https://github.com/nodesource/d
 実行タイミングはだいたい、`git clone` した後、`git pull` したときに package.json に更新があったときぐらいです。
 
 ```
-node install
+npm install
 ```
 
 実行すると`high severity vulnerabilities`みたいなメッセージが出てきますが、いったん無視します。
