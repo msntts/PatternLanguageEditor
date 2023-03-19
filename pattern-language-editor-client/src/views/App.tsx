@@ -1,11 +1,11 @@
 import React from 'react'
 import './App.css'
-import PatternComponent from './components/PatternComponent'
+import PatternComponentContainer from './containers/PatternContainer'
 
 function App() {
   return (
     <div className="App">
-      <PatternComponent />
+      <PatternComponentContainer />
     </div>
   )
 }
