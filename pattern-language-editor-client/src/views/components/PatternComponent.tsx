@@ -10,7 +10,7 @@ export type Props = {
   result: string
 }
 
-function Pattern({ name, imgPath, context, problem, fource, solution, result }: Props) {
+function PatternComponent({ name, imgPath, context, problem, fource, solution, result }: Props) {
   return (
     <div>
       <div>
@@ -43,4 +43,4 @@ function Pattern({ name, imgPath, context, problem, fource, solution, result }: 
   )
 }
 
-export default Pattern
+export default PatternComponent

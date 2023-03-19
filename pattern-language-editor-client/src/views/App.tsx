@@ -1,11 +1,11 @@
 import React from 'react'
 import './App.css'
-import Pattern from './components/Pattern'
+import PatternComponent from './components/PatternComponent'
 
 function App() {
   return (
     <div className="App">
-      <Pattern
+      <PatternComponent
         name="おしゃれな見た目"
         imgPath=""
         context="自分たちのコンテンツを展示し、興味を持ってもらおうとしている"
@@ -13,7 +13,7 @@ function App() {
         fource="見てくれる全員を捕まえて詳しい説明をする時間がない"
         solution="コンテンツの入り口となる部分の見た目をよくして興味を持ってもらおう"
         result="自分たちのコンテンツに興味を持ってもらうきっかけを増やせる"
-      ></Pattern>
+      ></PatternComponent>
     </div>
   )
 }
