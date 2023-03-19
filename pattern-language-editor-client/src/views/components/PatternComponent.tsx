@@ -1,43 +1,37 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import type { RootState } from '../../store'
 
-export type Props = {
-  name: string
-  imgPath: string
-  context: string
-  problem: string
-  fource: string
-  solution: string
-  result: string
-}
+function PatternComponent() {
+  const pattern = useSelector((state: RootState) => state.pattern)
 
-function PatternComponent({ name, imgPath, context, problem, fource, solution, result }: Props) {
   return (
     <div>
       <div>
-        <input type="text" defaultValue={name} readOnly={true} />
+        <input type="text" defaultValue={pattern.name} readOnly={true} />
       </div>
       <div>
-        <img src={imgPath} />
+        <img src={pattern.imgPath} />
       </div>
       <div>
         <label>コンテキスト</label>
-        <input type="text" defaultValue={context} readOnly={true} />
+        <input type="text" defaultValue={pattern.context} readOnly={true} />
       </div>
       <div>
         <label>問題</label>
-        <input type="text" defaultValue={problem} readOnly={true} />
+        <input type="text" defaultValue={pattern.problem} readOnly={true} />
       </div>
       <div>
         <label>フォース</label>
-        <input type="text" defaultValue={fource} readOnly={true} />
+        <input type="text" defaultValue={pattern.fource} readOnly={true} />
       </div>
       <div>
         <label>解決策</label>
-        <input type="text" defaultValue={solution} readOnly={true} />
+        <input type="text" defaultValue={pattern.solution} readOnly={true} />
       </div>
       <div>
         <label>結果</label>
-        <input type="text" defaultValue={result} readOnly={true} />
+        <input type="text" defaultValue={pattern.result} readOnly={true} />
       </div>
     </div>
   )
