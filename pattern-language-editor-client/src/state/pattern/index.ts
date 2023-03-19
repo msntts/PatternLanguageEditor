@@ -1,3 +1,3 @@
-import { patternSlice } from './PatternSlice'
+import { patternSlice } from './slice'
 
 export const patternReducer = patternSlice.reducer

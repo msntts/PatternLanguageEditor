@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { initialState } from './PatternStates'
+import { initialState } from './states'
 
 export const patternSlice = createSlice({
   name: 'pattern',
