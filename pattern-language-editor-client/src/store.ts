@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { patternReducer } from './state/pattern'
+import { patternsReducer } from './state/patterns'
 
 export const store = configureStore({
   reducer: {
-    pattern: patternReducer,
+    patternsReducer: patternsReducer,
   },
 })
 
