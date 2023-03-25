@@ -1,7 +1,6 @@
 import { connect, useSelector } from 'react-redux'
-import PatternTab, { Props } from '../components/PatternComponentTab'
+import PatternTab from '../components/PatternComponentTab'
 import type { RootState } from '../../store'
-import PatternContainer from './PatternContainer'
 
 const mapStateToProps = (): string[] => {
   const patterns = useSelector((state: RootState) => state.patternsReducer.patterns)
