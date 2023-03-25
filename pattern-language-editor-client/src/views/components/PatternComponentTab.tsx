@@ -10,29 +10,17 @@ export type Props = {
   result: string
 }
 
-export type Data = Array<{
-  key: {
-    name: string
-    imgPath: string
-    context: string
-    problem: string
-    fource: string
-    solution: string
-    result: string
-  }
-}>
-
 function PatternTab(list: string[]) {
-  //listがうまく読み込めていない。
-  //仮にリストをおくと表示されることを確認
-  const list2 = ['ichigo', 'aoi', 'ran']
-  const listItems = (): JSX.Element[] => {
-    return list2.map((item) => <li key={item}> {item}</li>)
+  //listには各パターンのnameが入っている
+  const arr: JSX.Element[] = []
+  for (let i = 0; i < 2; i++) {
+    arr.push(<li key={list[i]}> {list[i]}</li>)
   }
-  console.log(listItems)
+
+  console.log(list.length)
   return (
     <span>
-      <ul>{listItems()}</ul>
+      <ul>{arr}</ul>
     </span>
   )
 }
