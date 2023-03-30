@@ -10,14 +10,12 @@ export type Props = {
   result: string
 }
 
-function PatternTab(list: string[]) {
-  //listには各パターンのnameが入っている
+function PatternTab(patterns: Props[]) {
   const arr: JSX.Element[] = []
-  for (let i = 0; i < 2; i++) {
-    arr.push(<li key={list[i]}> {list[i]}</li>)
+  for (let i = 0; i < Object.keys(patterns).length; i++) {
+    arr.push(<li key={patterns[i].name}> {patterns[i].name}</li>)
   }
 
-  console.log(list.length)
   return (
     <span>
       <ul>{arr}</ul>

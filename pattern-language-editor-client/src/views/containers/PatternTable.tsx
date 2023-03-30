@@ -1,12 +1,11 @@
 import { connect, useSelector } from 'react-redux'
-import PatternTab from '../components/PatternComponentTab'
+import PatternTab, { Props } from '../components/PatternComponentTab'
 import type { RootState } from '../../store'
 
-const mapStateToProps = (): string[] => {
+const mapStateToProps = (): Props[] => {
   const patterns = useSelector((state: RootState) => state.patternsReducer.patterns)
 
-  //パターンの名前をリストに格納して渡している（今回は2個のパターン）
-  return patterns.map((item) => item.name)
+  return patterns
 }
 
 const mapDispatchToProps = () => {
