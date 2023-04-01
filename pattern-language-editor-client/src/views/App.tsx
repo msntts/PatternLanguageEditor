@@ -1,11 +1,13 @@
 import React from 'react'
 import './App.css'
-import PatternComponentContainer from './containers/PatternContainer'
+import PatternList from './containers/PatternListContainer'
+import PatternView from './containers/PatternViewContainer'
 
 function App() {
   return (
     <div className="App">
-      <PatternComponentContainer />
+      <PatternList />
+      <PatternView />
     </div>
   )
 }
