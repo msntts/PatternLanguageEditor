@@ -1,19 +1,16 @@
 import React from 'react'
 
 export type Props = {
-  name: string
-  imgPath: string
-  context: string
-  problem: string
-  fource: string
-  solution: string
-  result: string
+  names: string[]
 }
 
-function PatternList(patterns: Props[]) {
+function PatternList(listItem: Props) {
   const arr: JSX.Element[] = []
-  for (let i = 0; i < Object.keys(patterns).length; i++) {
-    arr.push(<li key={patterns[i].name}> {patterns[i].name}</li>)
+
+  if (listItem) {
+    listItem.names.forEach((name) => {
+      arr.push(<li key={name}> {name}</li>)
+    })
   }
 
   return (
