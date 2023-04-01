@@ -1,5 +1,5 @@
 import { connect, useSelector } from 'react-redux'
-import PatternTab, { Props } from '../components/PatternComponentTab'
+import PatternList, { Props } from '../components/PatternListComponent'
 import type { RootState } from '../../store'
 
 const mapStateToProps = (): Props[] => {
@@ -12,4 +12,4 @@ const mapDispatchToProps = () => {
   return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PatternTab)
+export default connect(mapStateToProps, mapDispatchToProps)(PatternList)

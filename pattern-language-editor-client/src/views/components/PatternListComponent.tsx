@@ -10,7 +10,7 @@ export type Props = {
   result: string
 }
 
-function PatternTab(patterns: Props[]) {
+function PatternList(patterns: Props[]) {
   const arr: JSX.Element[] = []
   for (let i = 0; i < Object.keys(patterns).length; i++) {
     arr.push(<li key={patterns[i].name}> {patterns[i].name}</li>)
@@ -23,4 +23,4 @@ function PatternTab(patterns: Props[]) {
   )
 }
 
-export default PatternTab
+export default PatternList

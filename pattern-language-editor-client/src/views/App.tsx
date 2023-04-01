@@ -1,12 +1,12 @@
 import React from 'react'
 import './App.css'
-import PatternTab from './containers/PatternTable'
+import PatternList from './containers/PatternListContainer'
 import PatternComponentContainer from './containers/PatternContainer'
 
 function App() {
   return (
     <div className="App">
-      <PatternTab />
+      <PatternList />
       <PatternComponentContainer />
     </div>
   )
