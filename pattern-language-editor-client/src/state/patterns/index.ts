@@ -1,5 +1,5 @@
-import { patternsSlice, selectpattarnSlice } from './slice'
+import { patternsSlice } from './slice'
 
 export const patternsReducer = patternsSlice.reducer
-export const selectpattarnReducer = selectpattarnSlice.reducer
-export { patternsSelector, patternNamesSelector } from './selector'
+export const { select } = patternsSlice.actions
+export { patternsSelector, selectedPatternSelector, patternNamesSelector } from './selector'

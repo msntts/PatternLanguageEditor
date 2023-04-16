@@ -1,11 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { patternsReducer, selectpattarnReducer } from './state/patterns'
+import { patternsReducer } from './state/patterns'
 import { combineReducers } from 'redux'
 
 //リデューサ
 const reducer = combineReducers({
   patternsReducer: patternsReducer,
-  selectpattarnReducer: selectpattarnReducer,
 })
 
 export const store = configureStore({

@@ -1,25 +1,17 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState, store } from '../../store'
-import { select } from '../../state/patterns/slice'
 
 export type Props = {
   names: string[]
+  onPatternSelected: (patternName: string) => void
 }
 
-function PatternList(listItem: Props) {
-  const dispatch = useDispatch()
-
+function PatternList(props: Props) {
   const arr: JSX.Element[] = []
 
-  const onClick = (e: any) => {
-    dispatch(select(e.currentTarget.id))
-  }
-
-  if (listItem) {
-    listItem.names.forEach((name) => {
+  if (props.names) {
+    props.names.forEach((name) => {
       arr.push(
-        <li key={name} id={name} onClick={onClick}>
+        <li key={name} id={name} onClick={() => props.onPatternSelected(name)}>
           {name}
         </li>
       )

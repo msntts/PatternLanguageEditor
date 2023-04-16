@@ -1,15 +1,16 @@
-import { connect, useSelector } from 'react-redux'
-import PatternList, { Props } from '../components/PatternListComponent'
-import { patternNamesSelector } from '../../state/patterns'
+import { connect } from 'react-redux'
+import PatternList from '../components/PatternListComponent'
+import { patternNamesSelector, select } from '../../state/patterns'
+import { AppDispatch, RootState } from '../../store'
 
-const mapStateToProps = (): Props => {
-  const patternNames = useSelector(patternNamesSelector)
+const mapStateToProps = (state: RootState) => ({
+  names: patternNamesSelector(state),
+})
 
-  return { names: patternNames }
-}
-
-const mapDispatchToProps = () => {
-  return {}
+const mapDispatchToProps = (dispatch: AppDispatch) => {
+  return {
+    onPatternSelected: (patternName: string) => dispatch(select(patternName)),
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PatternList)
