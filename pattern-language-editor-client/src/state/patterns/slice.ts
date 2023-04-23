@@ -5,8 +5,8 @@ export const patternsSlice = createSlice({
   name: 'patterns',
   initialState: initialState,
   reducers: {
-    select: (state, action: PayloadAction<string>) => {
-      state.selectedPatternName = action.payload
+    select: (state, action: PayloadAction<number>) => {
+      state.selectedPatternId = action.payload
     },
     edit: (state, action: PayloadAction<Pattern>) => {
       const editedIndex = state.patterns.findIndex((pattern) => pattern.id === action.payload.id)

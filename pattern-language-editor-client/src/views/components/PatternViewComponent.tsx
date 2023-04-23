@@ -1,6 +1,7 @@
 import React from 'react'
 
 export type Props = {
+  id: number
   name: string
   imgPath: string
   context: string
@@ -14,7 +15,8 @@ function PatternView(pattern: Props) {
   return (
     <div>
       <div>
-        <input type="text" value={pattern.name} readOnly={true} />
+        <label>#{pattern.id}</label>
+        <input type="text" name={pattern.name} value={pattern.name} readOnly={true} />
       </div>
       <div>
         <img src={pattern.imgPath} />

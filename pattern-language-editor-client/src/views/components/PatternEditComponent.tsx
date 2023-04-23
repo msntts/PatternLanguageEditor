@@ -54,6 +54,7 @@ function PatternEdit(pattern: Props) {
   return (
     <div>
       <div>
+        <label>#{pattern.id}</label>
         <input
           type="text"
           defaultValue={pattern.name}
