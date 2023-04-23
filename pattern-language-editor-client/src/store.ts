@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { patternsReducer } from './state/patterns'
+import { combineReducers } from 'redux'
+
+//リデューサ
+const reducer = combineReducers({
+  patternsReducer: patternsReducer,
+})
 
 export const store = configureStore({
-  reducer: {
-    patternsReducer: patternsReducer,
-  },
+  reducer,
 })
 
 export type AppDispatch = typeof store.dispatch

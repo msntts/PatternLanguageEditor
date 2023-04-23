@@ -2,14 +2,19 @@ import React from 'react'
 
 export type Props = {
   names: string[]
+  onPatternSelected: (patternName: string) => void
 }
 
-function PatternList(listItem: Props) {
+function PatternList(props: Props) {
   const arr: JSX.Element[] = []
 
-  if (listItem) {
-    listItem.names.forEach((name) => {
-      arr.push(<li key={name}> {name}</li>)
+  if (props.names) {
+    props.names.forEach((name) => {
+      arr.push(
+        <li key={name} id={name} onClick={() => props.onPatternSelected(name)}>
+          {name}
+        </li>
+      )
     })
   }
 
