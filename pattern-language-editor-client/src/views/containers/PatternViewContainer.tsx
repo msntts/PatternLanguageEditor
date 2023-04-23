@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import PatternView from '../components/PatternViweComponent'
+import PatternView from '../components/PatternViewComponent'
 import { selectedPatternSelector } from '../../state/patterns/selector'
 import { RootState } from '../../store'
 
