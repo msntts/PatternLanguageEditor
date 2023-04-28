@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export type Props = {
+export type PatternChunks = {
   id: number
   name: string
   imgPath: string
@@ -10,49 +10,22 @@ export type Props = {
   fource: string
   solution: string
   result: string
+}
 
+type PatternEditProps = PatternChunks & {
   returnPath: string
 
-  onSubmitChanges: (
-    id: number,
-    name: string,
-    imgPath: string,
-    context: string,
-    problem: string,
-    fource: string,
-    solution: string,
-    result: string
-  ) => void
+  onSubmitChanges: (patternChunks: PatternChunks) => void
 }
 
-interface EditProp {
-  name: string
-  imgPath: string
-  context: string
-  problem: string
-  fource: string
-  solution: string
-  result: string
-}
-
-function PatternEdit(pattern: Props) {
-  const [previewImgPath, setPreviewImgPath] = useState<string>(pattern.imgPath)
-
-  const [patternElements, setPattern] = useState<EditProp>({
-    name: pattern.name,
-    imgPath: pattern.imgPath,
-    context: pattern.context,
-    problem: pattern.problem,
-    fource: pattern.fource,
-    solution: pattern.solution,
-    result: pattern.result,
-  })
+function PatternEdit(props: PatternEditProps) {
+  const [patternChunks, setPatternChunks] = useState<PatternChunks>({ ...(props as PatternChunks) })
 
   const handleEditFormChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setPattern({ ...patternElements, [event.target.name]: event.target.value })
+    setPatternChunks({ ...patternChunks, [event.target.name]: event.target.value })
   }
 
-  function previewImage(event: ChangeEvent<HTMLInputElement>) {
+  const handleEditImage = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files
 
     if (files && files.length > 0) {
@@ -61,7 +34,7 @@ function PatternEdit(pattern: Props) {
 
       reader.onload = () => {
         if (reader.result !== null) {
-          setPreviewImgPath(reader.result as string)
+          setPatternChunks({ ...patternChunks, imgPath: reader.result as string })
         }
       }
 
@@ -72,24 +45,23 @@ function PatternEdit(pattern: Props) {
   return (
     <div>
       <div>
-        <label>#{pattern.id}</label>
+        <label>#{patternChunks.id}</label>
         <input
           type="text"
-          defaultValue={pattern.name}
+          defaultValue={patternChunks.name}
           name="name"
           onChange={handleEditFormChange}
         />
       </div>
       <div>
-        <img src={pattern.imgPath} />
-        {previewImgPath && <img src={previewImgPath} />}
-        <input type="file" onChange={previewImage} accept="image/*"></input>
+        {patternChunks.imgPath && <img src={patternChunks.imgPath} />}
+        <input type="file" onChange={handleEditImage} accept="image/*"></input>
       </div>
       <div>
         <label>コンテキスト</label>
         <input
           type="text"
-          defaultValue={pattern.context}
+          defaultValue={patternChunks.context}
           name="context"
           onChange={handleEditFormChange}
         />
@@ -98,7 +70,7 @@ function PatternEdit(pattern: Props) {
         <label>問題</label>
         <input
           type="text"
-          defaultValue={pattern.problem}
+          defaultValue={patternChunks.problem}
           name="problem"
           onChange={handleEditFormChange}
         />
@@ -107,7 +79,7 @@ function PatternEdit(pattern: Props) {
         <label>フォース</label>
         <input
           type="text"
-          defaultValue={pattern.fource}
+          defaultValue={patternChunks.fource}
           name="fource"
           onChange={handleEditFormChange}
         />
@@ -116,7 +88,7 @@ function PatternEdit(pattern: Props) {
         <label>解決策</label>
         <input
           type="text"
-          defaultValue={pattern.solution}
+          defaultValue={patternChunks.solution}
           name="solution"
           onChange={handleEditFormChange}
         />
@@ -125,30 +97,20 @@ function PatternEdit(pattern: Props) {
         <label>結果</label>
         <input
           type="text"
-          defaultValue={pattern.result}
+          defaultValue={patternChunks.result}
           name="result"
           onChange={handleEditFormChange}
         />
       </div>
       <div>
         <Link
-          to={pattern.returnPath}
-          onClick={() =>
-            pattern.onSubmitChanges(
-              pattern.id,
-              patternElements.name,
-              previewImgPath,
-              patternElements.context,
-              patternElements.problem,
-              patternElements.fource,
-              patternElements.solution,
-              patternElements.result
-            )
-          }
+          to={props.returnPath}
+          onClick={() => props.onSubmitChanges({ ...(patternChunks as PatternChunks) })}
         >
-          <div> 適用</div>
+          適用
         </Link>
-        <Link to={pattern.returnPath}>キャンセル</Link>
+
+        <Link to={props.returnPath}>キャンセル</Link>
       </div>
     </div>
   )
