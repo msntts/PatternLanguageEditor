@@ -1,18 +1,14 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import PatternEdit, { PatternChunks } from '../components/PatternEditComponent'
 import { selectedPatternSelector, edit } from '../../state/patterns'
-import { AppDispatch, RootState } from '../../store'
 
-const mapStateToProps = (state: RootState) => {
-  const selected = selectedPatternSelector(state)
+const PatternEditContainer = () => {
+  const selected = useSelector(selectedPatternSelector)
+  const dispatch = useDispatch()
 
-  return { ...selected, returnPath: '/' }
-}
-
-const mapDispatchToProps = (dispatch: AppDispatch) => {
-  return {
-    onSubmitChanges: (props: PatternChunks) =>
+  const onSubmitChanges = useCallback(
+    (props: PatternChunks) =>
       dispatch(
         edit({
           id: props.id,
@@ -25,7 +21,10 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
           result: props.result,
         })
       ),
-  }
+    [dispatch]
+  )
+
+  return <PatternEdit {...selected} returnPath="/" onSubmitChanges={onSubmitChanges} />
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PatternEdit)
+export default PatternEditContainer
