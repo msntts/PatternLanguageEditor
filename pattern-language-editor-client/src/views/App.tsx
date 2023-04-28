@@ -5,7 +5,7 @@ import PatternList from './containers/PatternListContainer'
 import PatternView from './containers/PatternViewContainer'
 import PatternEdit from './containers/PatternEditContainer'
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <PatternList />

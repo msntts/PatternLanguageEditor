@@ -11,7 +11,7 @@ export type Props = {
   result: string
 }
 
-function PatternView(pattern: Props) {
+const PatternView = (pattern: Props) => {
   return (
     <div>
       <div>

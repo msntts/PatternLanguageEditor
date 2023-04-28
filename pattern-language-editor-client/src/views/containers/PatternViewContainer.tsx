@@ -20,8 +20,6 @@ const mapStateToProps = (state: RootState) => {
   }
 }
 
-export default connect(mapStateToProps)(PatternView)
-
 type PatternViewProps = {
   id: number
   name: string
@@ -33,7 +31,7 @@ type PatternViewProps = {
   result: string
 }
 
-function PatternView(props: PatternViewProps) {
+const PatternView = (props: PatternViewProps) => {
   return (
     <div>
       <PatternViewComponent
@@ -50,3 +48,5 @@ function PatternView(props: PatternViewProps) {
     </div>
   )
 }
+
+export default connect(mapStateToProps)(PatternView)

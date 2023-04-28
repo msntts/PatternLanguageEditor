@@ -18,7 +18,7 @@ type PatternEditProps = PatternChunks & {
   onSubmitChanges: (patternChunks: PatternChunks) => void
 }
 
-function PatternEdit(props: PatternEditProps) {
+const PatternEdit = (props: PatternEditProps) => {
   const [patternChunks, setPatternChunks] = useState<PatternChunks>({ ...(props as PatternChunks) })
 
   const handleEditFormChange = (event: ChangeEvent<HTMLInputElement>) => {

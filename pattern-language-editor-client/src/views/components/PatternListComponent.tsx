@@ -8,7 +8,7 @@ export type Props = {
   onPatternSelected: (patternId: number) => void
 }
 
-function PatternList(props: Props) {
+const PatternList = (props: Props) => {
   const arr: JSX.Element[] = []
 
   if (props.patterns) {
