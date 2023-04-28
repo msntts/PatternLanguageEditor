@@ -25,14 +25,32 @@ export type Props = {
   ) => void
 }
 
+interface EditProp {
+  name: string
+  imgPath: string
+  context: string
+  problem: string
+  fource: string
+  solution: string
+  result: string
+}
+
 function PatternEdit(pattern: Props) {
-  const [patternName, setPatternName] = useState<string>(pattern.name)
   const [previewImgPath, setPreviewImgPath] = useState<string>(pattern.imgPath)
-  const [patternContext, setPatternContext] = useState<string>(pattern.context)
-  const [patternProblem, setPatternProblem] = useState<string>(pattern.problem)
-  const [patternFource, setPatternFource] = useState<string>(pattern.fource)
-  const [patternSolution, setPatternSolution] = useState<string>(pattern.solution)
-  const [patternResult, setPatternResult] = useState<string>(pattern.result)
+
+  const [patternElements, setPattern] = useState<EditProp>({
+    name: pattern.name,
+    imgPath: pattern.imgPath,
+    context: pattern.context,
+    problem: pattern.problem,
+    fource: pattern.fource,
+    solution: pattern.solution,
+    result: pattern.result,
+  })
+
+  const handleEditFormChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setPattern({ ...patternElements, [event.target.name]: event.target.value })
+  }
 
   function previewImage(event: ChangeEvent<HTMLInputElement>) {
     const files = event.target.files
@@ -58,9 +76,8 @@ function PatternEdit(pattern: Props) {
         <input
           type="text"
           defaultValue={pattern.name}
-          onChange={(event) => {
-            setPatternName(event.target.value)
-          }}
+          name="name"
+          onChange={handleEditFormChange}
         />
       </div>
       <div>
@@ -73,9 +90,8 @@ function PatternEdit(pattern: Props) {
         <input
           type="text"
           defaultValue={pattern.context}
-          onChange={(event) => {
-            setPatternContext(event.target.value)
-          }}
+          name="context"
+          onChange={handleEditFormChange}
         />
       </div>
       <div>
@@ -83,9 +99,8 @@ function PatternEdit(pattern: Props) {
         <input
           type="text"
           defaultValue={pattern.problem}
-          onChange={(event) => {
-            setPatternProblem(event.target.value)
-          }}
+          name="problem"
+          onChange={handleEditFormChange}
         />
       </div>
       <div>
@@ -93,9 +108,8 @@ function PatternEdit(pattern: Props) {
         <input
           type="text"
           defaultValue={pattern.fource}
-          onChange={(event) => {
-            setPatternFource(event.target.value)
-          }}
+          name="fource"
+          onChange={handleEditFormChange}
         />
       </div>
       <div>
@@ -103,9 +117,8 @@ function PatternEdit(pattern: Props) {
         <input
           type="text"
           defaultValue={pattern.solution}
-          onChange={(event) => {
-            setPatternSolution(event.target.value)
-          }}
+          name="solution"
+          onChange={handleEditFormChange}
         />
       </div>
       <div>
@@ -113,9 +126,8 @@ function PatternEdit(pattern: Props) {
         <input
           type="text"
           defaultValue={pattern.result}
-          onChange={(event) => {
-            setPatternResult(event.target.value)
-          }}
+          name="result"
+          onChange={handleEditFormChange}
         />
       </div>
       <div>
@@ -124,17 +136,17 @@ function PatternEdit(pattern: Props) {
           onClick={() =>
             pattern.onSubmitChanges(
               pattern.id,
-              patternName,
+              patternElements.name,
               previewImgPath,
-              patternContext,
-              patternProblem,
-              patternFource,
-              patternSolution,
-              patternResult
+              patternElements.context,
+              patternElements.problem,
+              patternElements.fource,
+              patternElements.solution,
+              patternElements.result
             )
           }
         >
-          適用
+          <div> 適用</div>
         </Link>
         <Link to={pattern.returnPath}>キャンセル</Link>
       </div>
