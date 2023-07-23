@@ -12,13 +12,7 @@ export const patternsSlice = createSlice({
       const editedIndex = state.patterns.findIndex((pattern) => pattern.id === action.payload.id)
 
       try {
-        state.patterns[editedIndex].name = action.payload.name
-        state.patterns[editedIndex].imgPath = action.payload.imgPath
-        state.patterns[editedIndex].context = action.payload.context
-        state.patterns[editedIndex].problem = action.payload.problem
-        state.patterns[editedIndex].fource = action.payload.fource
-        state.patterns[editedIndex].solution = action.payload.solution
-        state.patterns[editedIndex].result = action.payload.result
+        state.patterns[editedIndex] = action.payload
       } catch {
         console.log(`${action.payload.id}は存在していません。`)
       }
@@ -34,6 +28,15 @@ export const patternsSlice = createSlice({
         state.patterns.push(newPattern)
       } else {
         console.log(`${action.payload.id}がすでに存在しています。`)
+      }
+    },
+    remove: (state, action: PayloadAction<number>) => {
+      const updatedPatterns = state.patterns.filter((pattern) => pattern.id !== action.payload)
+
+      if (state.patterns.length !== updatedPatterns.length) {
+        state.patterns = updatedPatterns
+      } else {
+        console.log(`${action.payload}は存在していません。`)
       }
     },
   },
