@@ -4,6 +4,7 @@ import './App.css'
 import PatternList from './containers/PatternListContainer'
 import PatternView from './containers/PatternViewContainer'
 import PatternEdit from './containers/PatternEditContainer'
+import PatternCreate from './containers/PatternCreateContainer'
 
 const App = () => {
   return (
@@ -12,9 +13,8 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<PatternView />} />
-        </Routes>
-        <Routes>
           <Route path="/edit" element={<PatternEdit />} />
+          <Route path="/create" element={<PatternCreate />} />
         </Routes>
       </Router>
     </div>

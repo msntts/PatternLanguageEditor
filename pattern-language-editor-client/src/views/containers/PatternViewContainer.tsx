@@ -36,6 +36,7 @@ const PatternViewContainer = () => {
         <input type="text" value={selected.result} readOnly={true} />
       </div>
       <Link to="/edit">パターンを編集する</Link>
+      <Link to="/create">パターンを作成する</Link>
     </div>
   )
 }
