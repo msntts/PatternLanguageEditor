@@ -9,7 +9,12 @@ export type Pattern = {
   result: string
 }
 
-export const initialState = {
+export type PatternState = {
+  patterns: Pattern[]
+  selectedPatternId: number
+}
+
+export const initialState: PatternState = {
   patterns: [
     {
       id: 0,
@@ -35,6 +40,6 @@ export const initialState = {
       result:
         '業務改善によって伸ばしたい【業務の付加価値】(1-05)が明確になることで、手段と目的がそぐわない事態を未然に防ぐことができる。',
     },
-  ] as Pattern[],
+  ],
   selectedPatternId: -1,
 }
