@@ -10,7 +10,7 @@ export const patternsSelector = createSelector(
 export const selectedPatternSelector = createSelector(
   (state: RootState) => state.patternsReducer,
   (state) => {
-    const selecteds = state.patterns.filter((pattern) => pattern.name === state.selectedPatternName)
+    const selecteds = state.patterns.filter((pattern) => pattern.id === state.selectedPatternId)
 
     if (selecteds.length == 1) {
       return selecteds[0]

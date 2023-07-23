@@ -1,24 +1,43 @@
-import { connect } from 'react-redux'
-import PatternView from '../components/PatternViweComponent'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { selectedPatternSelector } from '../../state/patterns/selector'
-import { RootState } from '../../store'
 
-const mapStateToProps = (state: RootState) => {
-  const selected = selectedPatternSelector(state)
+const PatternViewContainer = () => {
+  const selected = useSelector(selectedPatternSelector)
 
-  return {
-    name: selected.name,
-    imgPath: selected.imgPath,
-    context: selected.context,
-    problem: selected.problem,
-    fource: selected.fource,
-    solution: selected.solution,
-    result: selected.result,
-  }
+  return (
+    <div>
+      <div>
+        <label>#{selected.id}</label>
+        <input type="text" name={selected.name} value={selected.name} readOnly={true} />
+      </div>
+      <div>
+        <img src={selected.imgPath} />
+      </div>
+      <div>
+        <label>コンテキスト</label>
+        <input type="text" value={selected.context} readOnly={true} />
+      </div>
+      <div>
+        <label>問題</label>
+        <input type="text" value={selected.problem} readOnly={true} />
+      </div>
+      <div>
+        <label>フォース</label>
+        <input type="text" value={selected.fource} readOnly={true} />
+      </div>
+      <div>
+        <label>解決策</label>
+        <input type="text" value={selected.solution} readOnly={true} />
+      </div>
+      <div>
+        <label>結果</label>
+        <input type="text" value={selected.result} readOnly={true} />
+      </div>
+      <Link to="/edit">パターンを編集する</Link>
+    </div>
+  )
 }
 
-const mapDispatchToProps = () => {
-  return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PatternView)
+export default PatternViewContainer
