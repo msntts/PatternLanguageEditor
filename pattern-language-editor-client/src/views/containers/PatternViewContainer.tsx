@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { selectedPatternSelector } from '../../state/patterns/selector'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectedPatternSelector, remove } from '../../state/patterns'
 
 const PatternViewContainer = () => {
   const selected = useSelector(selectedPatternSelector)
+  const dispatch = useDispatch()
 
   return (
     <div>
@@ -37,6 +38,13 @@ const PatternViewContainer = () => {
       </div>
       <Link to="/edit">パターンを編集する</Link>
       <Link to="/create">パターンを作成する</Link>
+      <label
+        onClick={() => {
+          dispatch(remove(selected.id))
+        }}
+      >
+        パターンを削除する
+      </label>
     </div>
   )
 }

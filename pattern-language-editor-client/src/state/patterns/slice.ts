@@ -23,7 +23,11 @@ export const patternsSlice = createSlice({
         // TODO 本処理は最終的にはサーバーへリクエストを送り、サーバー側で採番してもらう
         // 暫定実装として、ここで適当に採番する
         const newPattern = action.payload
-        newPattern.id = state.patterns[state.patterns.length - 1].id + 1
+        try {
+          newPattern.id = state.patterns[state.patterns.length - 1].id + 1
+        } catch {
+          newPattern.id = 1
+        }
 
         state.patterns.push(newPattern)
       } else {
