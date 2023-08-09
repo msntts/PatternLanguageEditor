@@ -5,10 +5,12 @@ import PatternList from './containers/PatternListContainer'
 import PatternView from './containers/PatternViewContainer'
 import PatternEdit from './containers/PatternEditContainer'
 import PatternCreate from './containers/PatternCreateContainer'
+import Header from './components/Header'
 
 const App = () => {
   return (
     <div className="App">
+      <Header />
       <PatternList />
       <Router>
         <Routes>
