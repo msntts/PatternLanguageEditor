@@ -17,7 +17,7 @@ const PatternListContainer = () => {
   return (
     <List>
       {patterns.map((pattern) => (
-        <ListItemButton key={pattern.name} onClick={() => onPatternSelected(pattern.id)}>
+        <ListItemButton key={pattern.id} onClick={() => onPatternSelected(pattern.id)}>
           <ListItemText sx={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
             #{pattern.id} {pattern.name}
           </ListItemText>
