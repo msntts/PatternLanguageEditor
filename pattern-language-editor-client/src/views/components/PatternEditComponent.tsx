@@ -1,3 +1,5 @@
+import { Button, Dialog, Input, TextField } from '@mui/material'
+import { Box, Stack } from '@mui/system'
 import React, { ChangeEvent, useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -43,76 +45,114 @@ const PatternEdit = (props: PatternEditProps) => {
   }
 
   return (
-    <div>
-      <div>
-        <label>#{patternChunks.id}</label>
-        <input
-          type="text"
+    <Dialog open={true}>
+      <Box style={{ minHeight: '50vh', overflowY: 'auto', padding: '20px' }}>
+        <TextField
+          id="name"
+          label={'#' + patternChunks.id + 'パターン名'}
           defaultValue={patternChunks.name}
+          variant="outlined"
           name="name"
           onChange={handleEditFormChange}
+          size="small"
+          margin="dense"
         />
-      </div>
-      <div>
-        {patternChunks.imgPath && <img src={patternChunks.imgPath} />}
-        <input type="file" onChange={handleEditImage} accept="image/*"></input>
-      </div>
-      <div>
-        <label>コンテキスト</label>
-        <input
-          type="text"
+
+        <Box>
+          {patternChunks.imgPath && (
+            <img
+              src={patternChunks.imgPath}
+              style={{ maxWidth: '100%', maxHeight: '200px', width: 'auto', height: 'auto' }}
+            />
+          )}
+          <Input type="file" onChange={handleEditImage} inputProps={{ accept: 'image/*' }}></Input>
+        </Box>
+
+        <TextField
+          id="context"
+          label="コンテキスト"
           defaultValue={patternChunks.context}
+          variant="outlined"
           name="context"
           onChange={handleEditFormChange}
+          fullWidth
+          margin="dense"
+          multiline
+          maxRows={4}
         />
-      </div>
-      <div>
-        <label>問題</label>
-        <input
-          type="text"
+
+        <TextField
+          id="problem"
+          label="問題"
           defaultValue={patternChunks.problem}
+          variant="outlined"
           name="problem"
           onChange={handleEditFormChange}
+          fullWidth
+          margin="dense"
+          multiline
+          maxRows={4}
         />
-      </div>
-      <div>
-        <label>フォース</label>
-        <input
-          type="text"
+
+        <TextField
+          id="fource"
+          label="フォース"
           defaultValue={patternChunks.fource}
+          variant="outlined"
           name="fource"
           onChange={handleEditFormChange}
+          fullWidth
+          margin="dense"
+          multiline
+          maxRows={4}
         />
-      </div>
-      <div>
-        <label>解決策</label>
-        <input
-          type="text"
+
+        <TextField
+          id="solution"
+          label="解決策"
           defaultValue={patternChunks.solution}
+          variant="outlined"
           name="solution"
           onChange={handleEditFormChange}
+          fullWidth
+          margin="dense"
+          multiline
+          maxRows={4}
         />
-      </div>
-      <div>
-        <label>結果</label>
-        <input
-          type="text"
+
+        <TextField
+          id="result"
+          label="結果"
           defaultValue={patternChunks.result}
+          variant="outlined"
           name="result"
           onChange={handleEditFormChange}
+          fullWidth
+          margin="dense"
+          multiline
+          maxRows={4}
         />
-      </div>
-      <div>
-        <Link
-          to={props.returnPath}
-          onClick={() => props.onSubmitChanges({ ...(patternChunks as PatternChunks) })}
+        <Stack
+          spacing={2}
+          direction="row"
+          justifyContent="center"
+          sx={{ display: 'flex', width: '100%' }}
         >
-          適用
-        </Link>
-
-        <Link to={props.returnPath}>キャンセル</Link>
-      </div>
-    </div>
+          {' '}
+          <Button component={Link} to={props.returnPath}>
+            キャンセル
+          </Button>
+          <Button
+            variant="contained"
+            component={Link}
+            to={props.returnPath}
+            onClick={() => props.onSubmitChanges({ ...(patternChunks as PatternChunks) })}
+          >
+            適用
+          </Button>
+        </Stack>
+      </Box>
+    </Dialog>
   )
 }
 
