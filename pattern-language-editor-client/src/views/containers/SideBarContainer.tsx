@@ -1,15 +1,12 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import PatternList from './PatternListContainer'
-import { Link as ReactRouterLink } from 'react-router-dom'
-import { Box, Button, Link } from '@mui/material'
+import { Link } from 'react-router-dom'
+import { Box, Button } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 
 const SideBarContainer = () => {
-  const boxRef = useRef<HTMLDivElement>()
-
   return (
     <Box
-      ref={boxRef}
       sx={{
         margin: '8px',
         minWidth: '400px',
@@ -20,14 +17,12 @@ const SideBarContainer = () => {
         color="info"
         variant="contained"
         startIcon={<AddIcon />}
-        component={ReactRouterLink}
+        component={Link}
         to="/create"
         size="large"
         fullWidth
       >
-        <Link color="inherit" underline="none">
-          パターンを追加する
-        </Link>
+        パターンを追加する
       </Button>
       <PatternList />
     </Box>
