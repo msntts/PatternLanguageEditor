@@ -16,8 +16,16 @@ const SideBarContainer = () => {
         maxWidth: '400px',
       }}
     >
-      <Button color="info" variant="contained" startIcon={<AddIcon />} size="large" fullWidth>
-        <Link color="inherit" underline="none" component={ReactRouterLink} to="/create">
+      <Button
+        color="info"
+        variant="contained"
+        startIcon={<AddIcon />}
+        component={ReactRouterLink}
+        to="/create"
+        size="large"
+        fullWidth
+      >
+        <Link color="inherit" underline="none">
           パターンを追加する
         </Link>
       </Button>
