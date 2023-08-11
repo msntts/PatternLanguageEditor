@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import PatternEdit, { PatternChunks } from '../components/PatternEditComponent'
+import PatternInputDialog, { PatternChunks } from '../components/PatternInputDialogComponent'
 import { selectedPatternSelector, edit } from '../../state/patterns'
 
-const PatternEditContainer = () => {
+const PatternEditDialogContainer = () => {
   const selected = useSelector(selectedPatternSelector)
   const dispatch = useDispatch()
 
@@ -24,7 +24,7 @@ const PatternEditContainer = () => {
     [dispatch]
   )
 
-  return <PatternEdit {...selected} returnPath="/" onSubmitChanges={onSubmitChanges} />
+  return <PatternInputDialog {...selected} returnPath="/" onSubmitChanges={onSubmitChanges} />
 }
 
-export default PatternEditContainer
+export default PatternEditDialogContainer

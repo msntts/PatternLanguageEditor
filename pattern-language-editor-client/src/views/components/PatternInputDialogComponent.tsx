@@ -14,13 +14,13 @@ export type PatternChunks = {
   result: string
 }
 
-type PatternEditProps = PatternChunks & {
+type PatternInputDialogProps = PatternChunks & {
   returnPath: string
 
   onSubmitChanges: (patternChunks: PatternChunks) => void
 }
 
-const PatternEdit = (props: PatternEditProps) => {
+const PatternInputDialog = (props: PatternInputDialogProps) => {
   const [patternChunks, setPatternChunks] = useState<PatternChunks>({ ...(props as PatternChunks) })
 
   const handleEditFormChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -156,4 +156,4 @@ const PatternEdit = (props: PatternEditProps) => {
   )
 }
 
-export default PatternEdit
+export default PatternInputDialog
