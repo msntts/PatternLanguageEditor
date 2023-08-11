@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Box } from '@mui/material'
 import './App.css'
 import PatternView from './containers/PatternViewContainer'
-import PatternEdit from './containers/PatternEditDialogContainer'
-import PatternCreate from './containers/PatternCreateDialogContainer'
 import Header from './components/HeaderComponent'
 import SideBar from './containers/SideBarContainer'
 
@@ -17,8 +15,6 @@ const App = () => {
           <SideBar />
           <Routes>
             <Route path="/" element={<PatternView />} />
-            <Route path="/edit" element={<PatternEdit />} />
-            <Route path="/create" element={<PatternCreate />} />
           </Routes>
         </Router>
       </Box>

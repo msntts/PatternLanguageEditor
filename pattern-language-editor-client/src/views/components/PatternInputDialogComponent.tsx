@@ -1,7 +1,6 @@
+import React, { ChangeEvent, useState } from 'react'
 import { Button, Dialog, Input, TextField } from '@mui/material'
 import { Box, Stack } from '@mui/system'
-import React, { ChangeEvent, useState } from 'react'
-import { Link } from 'react-router-dom'
 
 export type PatternChunks = {
   id: number
@@ -15,9 +14,10 @@ export type PatternChunks = {
 }
 
 type PatternInputDialogProps = PatternChunks & {
-  returnPath: string
+  visible: boolean
 
   onSubmitChanges: (patternChunks: PatternChunks) => void
+  onCancel: () => void
 }
 
 const PatternInputDialog = (props: PatternInputDialogProps) => {
@@ -45,7 +45,7 @@ const PatternInputDialog = (props: PatternInputDialogProps) => {
   }
 
   return (
-    <Dialog open={true}>
+    <Dialog open={props.visible}>
       <Box style={{ minHeight: '50vh', overflowY: 'auto', padding: '20px' }}>
         <TextField
           id="name"
@@ -139,13 +139,15 @@ const PatternInputDialog = (props: PatternInputDialogProps) => {
           sx={{ display: 'flex', width: '100%' }}
         >
           {' '}
-          <Button component={Link} to={props.returnPath}>
+          <Button
+            onClick={() => {
+              props.onCancel()
+            }}
+          >
             キャンセル
           </Button>
           <Button
             variant="contained"
-            component={Link}
-            to={props.returnPath}
             onClick={() => props.onSubmitChanges({ ...(patternChunks as PatternChunks) })}
           >
             適用
