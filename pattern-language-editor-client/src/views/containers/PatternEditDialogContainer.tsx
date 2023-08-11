@@ -28,6 +28,8 @@ const PatternEditDialogContainer = (props: PatternEditDialogContainerProps) => {
           result: chunks.result,
         })
       )
+
+      props.onApply(true)
     },
     [dispatch]
   )
