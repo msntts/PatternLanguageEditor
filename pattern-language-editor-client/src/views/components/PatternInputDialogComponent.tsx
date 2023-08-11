@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react'
-import { Button, Dialog, Input, TextField } from '@mui/material'
-import { Box, Stack } from '@mui/system'
+import { Button, Dialog, Input, Grid, TextField } from '@mui/material'
+import { Stack } from '@mui/system'
 
 export type PatternChunks = {
   id: number
@@ -45,20 +45,22 @@ const PatternInputDialog = (props: PatternInputDialogProps) => {
   }
 
   return (
-    <Dialog open={props.visible}>
-      <Box style={{ minHeight: '50vh', overflowY: 'auto', padding: '20px' }}>
-        <TextField
-          id="name"
-          label={'#' + patternChunks.id + 'パターン名'}
-          defaultValue={patternChunks.name}
-          variant="outlined"
-          name="name"
-          onChange={handleEditFormChange}
-          size="small"
-          margin="dense"
-        />
+    <Dialog open={props.visible} maxWidth="lg">
+      <Grid container flexDirection="column" p={2} spacing={2} width="720px">
+        <Grid item>
+          <TextField
+            id="name"
+            label={'#' + patternChunks.id + 'パターン名'}
+            defaultValue={patternChunks.name}
+            variant="outlined"
+            name="name"
+            onChange={handleEditFormChange}
+            size="small"
+            fullWidth
+          />
+        </Grid>
 
-        <Box>
+        <Grid item>
           {patternChunks.imgPath && (
             <img
               src={patternChunks.imgPath}
@@ -66,94 +68,102 @@ const PatternInputDialog = (props: PatternInputDialogProps) => {
             />
           )}
           <Input type="file" onChange={handleEditImage} inputProps={{ accept: 'image/*' }}></Input>
-        </Box>
+        </Grid>
 
-        <TextField
-          id="context"
-          label="コンテキスト"
-          defaultValue={patternChunks.context}
-          variant="outlined"
-          name="context"
-          onChange={handleEditFormChange}
-          fullWidth
-          margin="dense"
-          multiline
-          maxRows={4}
-        />
+        <Grid item>
+          <TextField
+            id="context"
+            label="コンテキスト"
+            defaultValue={patternChunks.context}
+            variant="outlined"
+            name="context"
+            onChange={handleEditFormChange}
+            fullWidth
+            multiline
+            maxRows={4}
+          />
+        </Grid>
 
-        <TextField
-          id="problem"
-          label="問題"
-          defaultValue={patternChunks.problem}
-          variant="outlined"
-          name="problem"
-          onChange={handleEditFormChange}
-          fullWidth
-          margin="dense"
-          multiline
-          maxRows={4}
-        />
+        <Grid item>
+          <TextField
+            id="problem"
+            label="問題"
+            defaultValue={patternChunks.problem}
+            variant="outlined"
+            name="problem"
+            onChange={handleEditFormChange}
+            fullWidth
+            multiline
+            maxRows={4}
+          />
+        </Grid>
 
-        <TextField
-          id="fource"
-          label="フォース"
-          defaultValue={patternChunks.fource}
-          variant="outlined"
-          name="fource"
-          onChange={handleEditFormChange}
-          fullWidth
-          margin="dense"
-          multiline
-          maxRows={4}
-        />
+        <Grid item>
+          <TextField
+            id="fource"
+            label="フォース"
+            defaultValue={patternChunks.fource}
+            variant="outlined"
+            name="fource"
+            onChange={handleEditFormChange}
+            fullWidth
+            multiline
+            maxRows={4}
+          />
+        </Grid>
 
-        <TextField
-          id="solution"
-          label="解決策"
-          defaultValue={patternChunks.solution}
-          variant="outlined"
-          name="solution"
-          onChange={handleEditFormChange}
-          fullWidth
-          margin="dense"
-          multiline
-          maxRows={4}
-        />
+        <Grid item>
+          <TextField
+            id="solution"
+            label="解決策"
+            defaultValue={patternChunks.solution}
+            variant="outlined"
+            name="solution"
+            onChange={handleEditFormChange}
+            fullWidth
+            multiline
+            maxRows={4}
+          />
+        </Grid>
 
-        <TextField
-          id="result"
-          label="結果"
-          defaultValue={patternChunks.result}
-          variant="outlined"
-          name="result"
-          onChange={handleEditFormChange}
-          fullWidth
-          margin="dense"
-          multiline
-          maxRows={4}
-        />
-        <Stack
-          spacing={2}
-          direction="row"
-          justifyContent="center"
-          sx={{ display: 'flex', width: '100%' }}
-        >
-          {' '}
-          <Button
-            onClick={() => {
-              props.onCancel()
-            }}
+        <Grid item>
+          <TextField
+            id="result"
+            label="結果"
+            defaultValue={patternChunks.result}
+            variant="outlined"
+            name="result"
+            onChange={handleEditFormChange}
+            fullWidth
+            multiline
+            maxRows={4}
+          />
+        </Grid>
+
+        <Grid item>
+          <Stack
+            spacing={2}
+            direction="row"
+            justifyContent="center"
+            sx={{ display: 'flex', width: '100%' }}
           >
-            キャンセル
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => props.onSubmitChanges({ ...(patternChunks as PatternChunks) })}
-          >
-            適用
-          </Button>
-        </Stack>
-      </Box>
+            {' '}
+            <Button
+              onClick={() => {
+                props.onCancel()
+              }}
+            >
+              キャンセル
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => props.onSubmitChanges({ ...(patternChunks as PatternChunks) })}
+            >
+              適用
+            </Button>
+          </Stack>
+        </Grid>
+      </Grid>
     </Dialog>
   )
 }
