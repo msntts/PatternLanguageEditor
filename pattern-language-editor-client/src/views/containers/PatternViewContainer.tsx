@@ -1,26 +1,9 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectedPatternSelector, remove } from '../../state/patterns'
-import Button from '@mui/material/Button'
-import PatternEditDialog from './PatternEditDialogContainer'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { selectedPatternSelector } from '../../state/patterns'
 
 const PatternViewContainer = () => {
   const selected = useSelector(selectedPatternSelector)
-  const dispatch = useDispatch()
-
-  const [dialogVisible, setDialogVisible] = useState(false)
-
-  const onApplyCreation = (success: boolean) => {
-    if (success) {
-      setDialogVisible(false)
-    } else {
-      // TODO: API失敗したら画面になんか出すとか
-    }
-  }
-
-  const onCancelCreation = () => {
-    setDialogVisible(false)
-  }
 
   return (
     <div>
@@ -51,22 +34,6 @@ const PatternViewContainer = () => {
         <label>結果</label>
         <input type="text" value={selected.result} readOnly={true} />
       </div>
-      <Button onClick={() => setDialogVisible(true)}>パターンを編集する</Button>
-      <label
-        onClick={() => {
-          dispatch(remove(selected.id))
-        }}
-      >
-        パターンを削除する
-      </label>
-
-      {dialogVisible && (
-        <PatternEditDialog
-          visible={dialogVisible}
-          onApply={onApplyCreation}
-          onCancel={onCancelCreation}
-        />
-      )}
     </div>
   )
 }
